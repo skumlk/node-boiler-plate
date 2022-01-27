@@ -13,7 +13,6 @@ import { constants } from '../const/common';
 import UnauthorizedError from "../errors/UnauthorizedError";
 import * as ErrorCodes from "../errors/ErrorCodes"
 import BadRequestError from "../errors/BadRequestError";
-import { string } from "joi";
 
 @Service()
 export default class ProductService {
