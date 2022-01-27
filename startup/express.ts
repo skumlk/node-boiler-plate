@@ -5,9 +5,9 @@ const cors = require("cors")
 const rateLimit = require('express-rate-limit');
 const xss = require('xss-clean');
 const hpp = require('hpp');
-const mongoSanitize = require('express-mongo-sanitize');
 
 export default async ({ expressApp } = { expressApp: express.application }) => {
+    
     expressApp.use(cors());
     expressApp.use(require('morgan')('dev'));
     expressApp.use(helmet());
@@ -23,7 +23,6 @@ export default async ({ expressApp } = { expressApp: express.application }) => {
     });
 
     expressApp.use('/api', limiter);
-    expressApp.use(mongoSanitize());
     expressApp.use(xss());
     expressApp.use(hpp());
 }

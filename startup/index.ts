@@ -3,7 +3,6 @@ import expressLoader from './express';
 import routesLoader from './routes';
 import middlwareLoader from './middlewares';
 import configLoader from './config';
-import mongoLoader from "./mongodb";
 import express from "express";
 
 export default async ({ expressApp } = { expressApp: express.application }) => {
@@ -16,9 +15,6 @@ export default async ({ expressApp } = { expressApp: express.application }) => {
 
     await routesLoader({ expressApp })
     console.log("Routes initialized")
-
-    await mongoLoader()
-    console.log("Mongo DB initialized")
 
     await middlwareLoader({ expressApp })
     console.log("Middlewares initialized")

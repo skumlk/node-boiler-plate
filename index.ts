@@ -9,7 +9,7 @@ async function startServer() {
 
     try {
         await startup({ expressApp: app });
-    } catch (error) {
+    } catch (error: any) {
         console.log(error.message)
         return process.exit(1);
     }

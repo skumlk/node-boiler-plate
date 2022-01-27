@@ -13,7 +13,7 @@ export default class AuthService {
 
     async login(email: string, password: string) {
 
-        this.authValidationService.login({ email, password })  //Validates and throw errors if there is     
+        /*this.authValidationService.login({ email, password })  //Validates and throw errors if there is     
 
         const user = await this.userModelService.getUserByEmail(email)
         if (!user) throw new UnauthorizedError(ErrorCodes.INVALID_USERNAME_PASSWORD)
@@ -21,11 +21,12 @@ export default class AuthService {
         const isValidPassword = AuthHelpers.comparePassword(user, password);
         if (!isValidPassword) throw new UnauthorizedError(ErrorCodes.INVALID_USERNAME_PASSWORD)
 
-        return { "token": AuthHelpers.generateAuthenticationToken(user) };
+        return { "token": AuthHelpers.generateAuthenticationToken(user) };*/
     }
 
     async register(name: string, email: string, password: string) {
 
+        /*
         this.authValidationService.register({ name, email, password }) //Validates and throw errors if there is    
 
         const user = await this.userModelService.getUserByEmail(email)
@@ -34,6 +35,6 @@ export default class AuthService {
         const new_user = await this.userModelService.createNewUser({name, email, password})
         //Send email as an event!
 
-        return { "token": AuthHelpers.generateAuthenticationToken(new_user) };
+        return { "token": AuthHelpers.generateAuthenticationToken(new_user) };*/
     }
 }

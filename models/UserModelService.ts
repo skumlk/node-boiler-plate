@@ -1,18 +1,18 @@
-
 import { Service } from "typedi";
-import { User } from "../schemas/User";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient()
 
 @Service()
 export default class UserModelService {
 
     async createNewUser(data: { email: string, name: string, password: string }) {
-        const user = new User(data);
-        await user.save();
-        return user
+        // await prisma.user.create (data)
     }
 
     async getUserByEmail(email: string) {
-        return await User.findOne({ email });
+        return await prisma.product.findMany({
+            include: { Brand: true}
+        })
     }
-
 }
