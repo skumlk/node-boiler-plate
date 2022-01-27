@@ -20,11 +20,12 @@ export default class ProductController{
     static async getProduct(req: express.Request, res: express.Response, next: express.NextFunction) {
         
         try {
-            const { id } = req.body;
+            const { id } = req.params;
             const productService = Container.get(ProductService) // Service locator
             const data = await productService.getProduct(id)
             return httpHelpers.successResponse(res, data)
         } catch (e) {
+            console.log(e)
             next(e)
         }
     }
@@ -32,7 +33,7 @@ export default class ProductController{
     static async deleteProduct(req: express.Request, res: express.Response, next: express.NextFunction) {
         
         try {
-            const { id } = req.body;
+            const { id } = req.params;
             const productService = Container.get(ProductService) // Service locator
             const data = await productService.deleteProduct(id)
             return httpHelpers.successResponse(res, data)
@@ -45,9 +46,10 @@ export default class ProductController{
         
         try {
             const productService = Container.get(ProductService) // Service locator
-            const data = await productService.importProducts()
+            const data = await productService.importProducts(req.files)
             return httpHelpers.successResponse(res, data)
         } catch (e) {
+            console.log(e)
             next(e)
         }
     }

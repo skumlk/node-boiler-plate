@@ -1,8 +1,0 @@
-{
-    "dev": {
-        "driver": "mysql",
-        "user": "newuser",
-        "password": "password"
-    },
-    "sql-file" : true
-}

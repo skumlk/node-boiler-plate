@@ -5,9 +5,18 @@ const cors = require("cors")
 const rateLimit = require('express-rate-limit');
 const xss = require('xss-clean');
 const hpp = require('hpp');
+const bodyparser = require('body-parser')
+const fileUpload = require('express-fileupload');
 
 export default async ({ expressApp } = { expressApp: express.application }) => {
     
+    expressApp.use(fileUpload({
+        createParentPath: true,
+        useTempFiles : true,
+        tempFileDir : '/tmp/',
+        limits: { fileSize: 50 * 1024 * 1024 },
+    }));
+
     expressApp.use(cors());
     expressApp.use(require('morgan')('dev'));
     expressApp.use(helmet());

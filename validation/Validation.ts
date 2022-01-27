@@ -3,14 +3,11 @@ import ValidationError from "../errors/ValidationError";
 
 export default class Validation {
 
-    validate(schema: Joi.ObjectSchema, data: any, isThrowError = true) {
+    validate(schema: Joi.ObjectSchema, data: any) {
 
         const { error } = schema.validate(data);
         if (error)
-            if (isThrowError)
-                throw new ValidationError(error)
-            else
-                return error
+            throw new ValidationError(error.message)
 
         return true
     }

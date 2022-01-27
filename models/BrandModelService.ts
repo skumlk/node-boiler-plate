@@ -1,40 +1,36 @@
 
 import { Service } from "typedi";
 import { PrismaClient } from "@prisma/client";
-import IProduct from "../interfaces/IProduct";
 
 const prisma = new PrismaClient()
 
 @Service()
-export default class ProductModelService
+export default class BrandModelService
 {
     async list()
     {
-        return await prisma.product.findMany({
-            include: { Brand: true}
-        })
+        return await prisma.brand.findMany()
     }
 
     async get(id: number)
     {
-        return await prisma.product.findUnique({
-            include: { Brand: true},
+        return await prisma.brand.findUnique({
             where: { id }
         })
     }
 
     async delete(id: number)
     {
-        return await prisma.product.delete({
+        return await prisma.brand.delete({
             where: { id }
         })
     }
 
-    async createMany(products: IProduct[])
+    async createMany(brands: { name: string }[])
     {
         //Using this instead of create many since, it return all objects
         return await prisma.$transaction(
-            products.map((product) => prisma.product.create({ data: product })),
+            brands.map((brand) => prisma.brand.create({ data: brand })),
         );
     }
 }

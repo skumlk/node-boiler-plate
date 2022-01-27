@@ -1,10 +1,9 @@
 {
-  "name": "node-survey-app",
+  "name": "node-eshop-app",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
-  "program": "${workspaceFolder}/src/index.ts",
   "scripts": {
+    "start-dev": "NODE_ENV=dev ts-node index.ts ",
     "start": "NODE_ENV=dev nodemon index.ts",
     "test": "NODE_ENV=test jest",
     "build": "NODE_ENV=prod tsc --project ./",
@@ -16,19 +15,29 @@
       "/node_modules/"
     ]
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
+  "compilerOptions": {
+    "esModuleInterop": true
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^3.8.1",
+    "@types/express-fileupload": "^1.2.2",
+    "@types/uuid": "^8.3.4",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "db-migrate": "^0.11.13",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
     "express-mongo-sanitize": "^2.0.2",
     "express-rate-limit": "^5.2.3",
+    "fast-csv": "^4.3.6",
     "helmet": "^4.3.1",
     "hpp": "^0.2.3",
     "joi": "^17.3.0",
@@ -36,9 +45,11 @@
     "limiter": "^1.1.5",
     "lodash": "^4.17.20",
     "morgan": "^1.10.0",
+    "multer": "^1.4.4",
     "reflect-metadata": "^0.1.13",
     "ts-jest": "^26.4.4",
     "typedi": "^0.10.0",
+    "uuid": "^8.3.2",
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
